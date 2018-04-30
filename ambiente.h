@@ -7,7 +7,7 @@ using namespace std;
 class ambiente
 {
 public:
-    ambiente(int N, int Nt);
+    ambiente(int N, int Nt,bool temCardume);
     ambiente();
     void roda();
     double getTamM() const;

@@ -12,19 +12,19 @@ ambiente::ambiente()
         this->ag.push_back(finn);
     }
 }
-ambiente::ambiente(int Ns,int Nt)
+ambiente::ambiente(int Ns,int Nt,bool temCardume)
 {
     this->tamM=1000;
     for(int i=0;i<Ns;i++)
     {
         this->in.push_back(i);
-        agente finn(true);
+        agente finn(true,temCardume);
         this->ag.push_back(finn);
     }
     for(int i=0;i<Nt;i++)
     {
         this->in.push_back(i+Ns);
-        agente finn(false);
+        agente finn(false,temCardume);
         this->ag.push_back(finn);
     }
 }

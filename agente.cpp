@@ -25,8 +25,9 @@ agente::agente()
     else this->ehSardinha=true;
 }
 
-agente::agente(bool ehSardinha)
+agente::agente(bool ehSardinha, bool vouComAGalera)
 {
+    this->vouComAGalera=vouComAGalera;
     static int cnt=0;
     this->loc.x=(double)rand()/RAND_MAX;
     this->loc.y=(double)rand()/RAND_MAX;
@@ -88,7 +89,8 @@ void agente::rodaModelo()
         }
         else if(this->viz.size()>0)
         {
-            this->vaiComAGalera();
+            if (this->vouComAGalera)
+                this->vaiComAGalera();
             this->vaiDeBoa();
         }
         else

@@ -8,7 +8,7 @@ using namespace std;
 class agente
 {
 public:
-    agente(bool ehSardinha);
+    agente(bool ehSardinha, bool vouComAGalera);
     agente();
     void rodaModelo();
     void atua();
@@ -28,6 +28,7 @@ public:
 private:
     int id;
     bool ehSardinha;
+    bool vouComAGalera;         // indica se anda em cardume ou não
     posicao loc;
     double dir;                 // direção do movimento
     double angV;                // Angulo de visão
