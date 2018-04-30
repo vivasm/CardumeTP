@@ -2,16 +2,16 @@
 #include "ambiente.h"
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
     ofstream result;
-    int popS=201;
-    int popT=2; // população de tubarões
-
-    result.open("result.csv");
+    int popS=atoi(argv[1]);
+    int popT=atoi(argv[2]); // população de tubarões
+    result.open("resPops=_"+(string)argv[1]+"_PopT=_"+(string)argv[2]+"_.csv");
     result << "popS=" << popS<< "    popT="<<popT<<endl;
     result << "tempoCC;tempoSC"<<endl;
 
@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
             timeSC++;
         }
         result << timeCC << ";" << timeSC << endl;
+        cout << timeCC << ";" << timeSC << endl;
     }
     result.close();
 }
