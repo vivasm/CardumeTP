@@ -17,10 +17,13 @@ public:
     double getDir(int i);
     bool getEhSardinha(int i);
 
+    int getNSard() const;
+
 private:
     vector <agente> ag;
     vector <int> in;
     double tamM;
+    int nSard;
     void atuPerc();
     void rodaModelo();
     void atuacao();

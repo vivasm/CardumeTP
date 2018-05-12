@@ -15,6 +15,7 @@ ambiente::ambiente()
 ambiente::ambiente(int Ns,int Nt,bool temCardume)
 {
     this->tamM=1000;
+    this->nSard=Ns;
     for(int i=0;i<Ns;i++)
     {
         this->in.push_back(i);
@@ -64,6 +65,11 @@ bool ambiente::getEhSardinha(int i)
     return this->ag[i].getEhSardinha();
 }
 
+int ambiente::getNSard() const
+{
+    return nSard;
+}
+
 void ambiente::atuPerc()
 {
     double d;
@@ -99,7 +105,10 @@ void ambiente::atuacao()
     for(int i=0;i<this->ag.size();i++)
     {
         if(this->ag[i].getToMorto())
+        {
             this->ag.erase(this->ag.begin()+i);
+            this->nSard--;
+        }
         else
             this->ag[i].atua();
     }
