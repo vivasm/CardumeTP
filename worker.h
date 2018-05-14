@@ -4,7 +4,7 @@
 #include "ambiente.h"
 
 
-class worker : public QThread
+class worker// : public QThread
 {
 public:
     worker(ambiente *obj);

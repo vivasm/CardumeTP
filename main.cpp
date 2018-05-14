@@ -18,23 +18,28 @@ int main(int argc, char *argv[])
     result << "popS=" << popS<< "    popT="<<popT<<endl;
     result << "tempoCC;tempoSC"<<endl;
     ti=clock();
+
+    double tempoCC[10], tempoSC[10];
+
+    #pragma omp parallel for num_threads(4)
     for(int si=1;si<=10;si++)
     {
-        ambiente oceanoCC(popS*3,popT,true); // com efeito cardume
+        ambiente oceanoCC(popS,popT,true); // com efeito cardume
         ambiente oceanoSC(popS,popT,false);// sem efeito
         worker ambCC(&oceanoCC);
         worker ambSC(&oceanoSC);
 
-        ambCC.start();
-        ambSC.start();
+        ambCC.run();
+        ambSC.run();
 
-        ambCC.wait();
-        cout << "esperando o SC" << endl;
-        ambSC.wait();
-        result << ambCC.tempo << ";" << ambSC.tempo << endl;
-        cout << ambCC.tempo << ";" << ambSC.tempo << endl;
+        tempoCC[si-1] = ambCC.tempo;
+        tempoSC[si-1] = ambSC.tempo;
+
     }
     tf=clock();
     cout << "tempo:" << (double)(tf-ti)/CLOCKS_PER_SEC << endl;
+
+    for(int i=0; i<10; ++i)
+        result << tempoCC[i] << ";" << tempoSC[i] << endl;
     result.close();
 }

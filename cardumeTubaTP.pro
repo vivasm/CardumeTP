@@ -7,6 +7,9 @@ TARGET = cardumeTubaTP
 CONFIG += console
 CONFIG -= app_bundle
 
+LIBS += -fopenmp
+QMAKE_CXXFLAGS += -fopenmp
+
 TEMPLATE = app
 
 SOURCES += main.cpp \
